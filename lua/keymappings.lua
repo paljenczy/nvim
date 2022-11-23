@@ -1,5 +1,6 @@
 vim.api.nvim_set_keymap('n', '<Space>', '<NOP>', { noremap = true, silent = true })
 vim.g.mapleader = ' '
+vim.g.maplocalleader = ','
 
 -- no hl
 vim.api.nvim_set_keymap('n', '<Leader>h', ':set hlsearch!<CR>', { noremap = true, silent = true })
@@ -10,12 +11,36 @@ vim.api.nvim_set_keymap('n', '<Leader>fg', ':Telescope live_grep<CR>', { noremap
 vim.api.nvim_set_keymap('n', '<Leader>fb', ':Telescope buffers<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Leader>fh', ':Telescope help_tags<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Leader>fp', ':Telescope projects<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>fv', ':Telescope file_browser<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>fc', '<cmd>lua require(\'telescope\').extensions.githubcoauthors.coauthors()<CR>', { noremap = true, silent = true })
+
+-- search and replace with ssr
+vim.keymap.set({ "n", "x" }, "<leader>sr", function() require("ssr").open() end)
 
 -- buffer picker
 vim.api.nvim_set_keymap('n', '<Leader>b', ':BufferLinePick<CR>', { noremap = true, silent = true })
 
 -- Terminal open
 vim.api.nvim_set_keymap('n', '<Leader>t', ':ToggleTerm<CR>', { noremap = true, silent = true })
+
+-- iron also has a list of commands, see :h iron-commands for all available commands
+vim.keymap.set('n', '<Leader>rs', '<cmd>IronRepl<cr>')
+vim.keymap.set('n', '<Leader>rr', '<cmd>IronRestart<cr>')
+vim.keymap.set('n', '<Leader>rf', '<cmd>IronFocus<cr>')
+vim.keymap.set('n', '<Leader>rh', '<cmd>IronHide<cr>')
+
+-- quarto preview
+local quarto = require'quarto'
+vim.keymap.set('n', '<leader>qp', quarto.quartoPreview, {silent = true, noremap = true})
+
+-- trouble.nvim
+-- Lua
+vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>Trouble<cr>", {silent = true, noremap = true})
+vim.api.nvim_set_keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", {silent = true, noremap = true})
+vim.api.nvim_set_keymap("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>", {silent = true, noremap = true})
+vim.api.nvim_set_keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>", {silent = true, noremap = true})
+vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", {silent = true, noremap = true})
+vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>", {silent = true, noremap = true})
 
 -- better window movement
 vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { silent = true })

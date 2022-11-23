@@ -9,7 +9,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
   execute 'packadd packer.nvim'
 end
 
--- vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
+	-- vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
 
 
 return require('packer').startup(function()
@@ -24,22 +24,21 @@ return require('packer').startup(function()
 
   -- -- LSP
   use 'neovim/nvim-lspconfig'
-  use 'glepnir/lspsaga.nvim'
+  use {'glepnir/lspsaga.nvim', branch = 'main'}
   use 'onsails/lspkind-nvim'
   use 'kosayoda/nvim-lightbulb'
   use 'mfussenegger/nvim-jdtls'
-  use 'kabouzeid/nvim-lspinstall'
+
+  use { "williamboman/mason.nvim" }
+  use { "williamboman/mason-lspconfig.nvim" }
+
 
   use 'ray-x/lsp_signature.nvim'
+  use 'jose-elias-alvarez/null-ls.nvim'
+  use 'folke/trouble.nvim'
 
   -- Project management
   use 'ahmedkhalf/project.nvim'
-
-  -- co-pilot
-  use 'github/copilot.vim'
-
-  -- -- Debugging
-  -- use 'mfussenegger/nvim-dap'
 
   -- -- Autocomplete
   use {
@@ -52,49 +51,39 @@ return require('packer').startup(function()
         }
     }
 
-  -- use 'honza/vim-snippets'
-  -- -- use 'cstrap/python-snippets'
-  -- -- use 'ylcnfrht/vscode-python-snippet-pack'
-  -- -- use 'xabikos/vscode-javascript'
-  -- -- use 'golang/vscode-go'
-  -- -- use 'rust-lang/vscode-rust'
-  -- -- use 'SirVer/ultisnips'
-  -- -- use 'norcalli/snippets.nvim'
-
-
   -- -- Treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'nvim-treesitter/playground'
 
+  use { "cshuaimin/ssr.nvim", module = "ssr" }
+
   -- -- Icons
   use 'kyazdani42/nvim-web-devicons'
-  -- use 'ryanoasis/vim-devicons'
 
   -- -- Status Line and Bufferline
-  use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons'}
+  use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
   use {'nvim-lualine/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
 
   -- -- Telescope
   use 'nvim-lua/popup.nvim'
-  use 'nvim-lua/plenary.nvim'
-  use 'nvim-telescope/telescope.nvim'
+  use { 'nvim-telescope/telescope.nvim', requires = { {'nvim-lua/plenary.nvim'} } }
   use 'nvim-telescope/telescope-media-files.nvim'
   use 'nvim-telescope/telescope-fzy-native.nvim'
+  use 'nvim-telescope/telescope-file-browser.nvim'
 
-  -- -- Explorer
-  -- use 'kyazdani42/nvim-tree.lua'
+  use({ "folke/noice.nvim", requires = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify", } })
+
+  use {'hkupty/iron.nvim'}
 
 
   -- -- Color
-  -- use 'christianchiarulli/nvcode-color-schemes.vim'
-  -- use 'norcalli/nvim-colorizer.lua'
-  use {"npxbr/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
-  use 'EdenEast/nightfox.nvim'
-  use 'folke/tokyonight.nvim'
+  use({ "catppuccin/nvim", as = "catppuccin"})
 
+  use "lukas-reineke/indent-blankline.nvim"
 
   -- -- Terminal
-  use 'akinsho/nvim-toggleterm.lua'
+  use {'akinsho/nvim-toggleterm.lua', tag = "v2.*"}
+
 
   -- -- Git
   -- use 'TimUntersberger/neogit'
@@ -103,7 +92,18 @@ return require('packer').startup(function()
   -- use 'tpope/vim-fugitive'
   -- use 'tpope/vim-rhubarb'
   use 'sindrets/diffview.nvim'
+  use 'cwebster2/github-coauthors.nvim'
 
   -- -- General Plugins
   use 'b3nj5m1n/kommentary'
+
+  -- R 
+  use {'jalvesaq/Nvim-R', branch = 'stable'}
+
+  -- Typescript
+  use {'jose-elias-alvarez/typescript.nvim'}
+
+  -- quarto
+  use { 'quarto-dev/quarto-nvim', requires = {'neovim/nvim-lspconfig'}
+}
 end)

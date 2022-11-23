@@ -1,3 +1,6 @@
+local actions = require("telescope.actions")
+local trouble = require("trouble.providers.telescope")
+
 require('telescope').setup{
   defaults = {
     vimgrep_arguments = {
@@ -42,10 +45,19 @@ require('telescope').setup{
 
     -- Developer configurations: Not meant for general override
     buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker,
+    mappings = {
+      i = { ["<c-t>"] = trouble.open_with_trouble },
+      n = { ["<c-t>"] = trouble.open_with_trouble },
+    }
   },
   pickers = {
     -- Your special builtin config goes in here
+    find_files = {
+      theme = "ivy", hidden=true
+    },
+    live_grep = {theme = "ivy"},
     buffers = {
+      theme = "ivy",
       sort_lastused = true,
       mappings = {
         i = {
@@ -62,3 +74,5 @@ require('telescope').setup{
 }
 require('telescope').load_extension('fzy_native')
 require('telescope').load_extension('projects')
+require("telescope").load_extension('file_browser')
+require('telescope').load_extension('githubcoauthors')

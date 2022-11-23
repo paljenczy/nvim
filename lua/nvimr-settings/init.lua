@@ -1,0 +1,7 @@
+vim.api.nvim_set_var('R_app', 'radian')
+vim.api.nvim_set_var('R_cmd', 'R')
+vim.api.nvim_set_var('R_hl_term', 0)
+vim.api.nvim_set_var('R_bracketed_paste', 1)
+vim.api.nvim_set_var('R_assign', 2)
+vim.api.nvim_set_var('r_indent_align_args', 0)
+vim.api.nvim_set_var('R_rconsole_height', 10)

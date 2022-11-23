@@ -18,11 +18,9 @@ cmp.setup {
                                 " " .. vim_item.kind
             -- set a name for each source
             vim_item.menu = ({
-                buffer = "[Buffer]",
                 nvim_lsp = "[LSP]",
-                ultisnips = "[UltiSnips]",
+                buffer = "[Buffer]",
                 nvim_lua = "[Lua]",
-                cmp_tabnine = "[TabNine]",
                 look = "[Look]",
                 path = "[Path]",
                 spell = "[Spell]",
@@ -43,7 +41,7 @@ cmp.setup {
             behavior = cmp.ConfirmBehavior.Insert,
             select = true
         }),
-        ["<Tab>"] = cmp.mapping(function(fallback)
+        ["<C-x>"] = cmp.mapping(function(fallback)
             if vim.fn.pumvisible() == 1 then
                 if vim.fn["UltiSnips#CanExpandSnippet"]() == 1 or
                     vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
@@ -68,9 +66,8 @@ cmp.setup {
     },
     snippet = {expand = function(args) vim.fn["UltiSnips#Anon"](args.body) end},
     sources = {
-        {name = 'buffer'}, {name = 'nvim_lsp'}, {name = "ultisnips"},
+        {name = 'nvim_lsp'}, {name = 'buffer'}, {name = "ultisnips"},
         {name = "nvim_lua"}, {name = "look"}, {name = "path"},
-        {name = 'cmp_tabnine'}, {name = "calc"}, {name = "spell"},
         {name = "emoji"}
     },
     completion = {completeopt = 'menu,menuone,noinsert'}

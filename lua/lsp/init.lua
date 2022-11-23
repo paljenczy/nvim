@@ -17,10 +17,3 @@ vim.cmd('nnoremap <silent> <C-n> :Lspsaga diagnostic_jump_next<CR>')
 vim.cmd('nnoremap <silent> <C-f> <cmd>lua require(\'lspsaga.action\').smart_scroll_with_saga(1)<CR>')
 -- scroll up hover doc
 vim.cmd('nnoremap <silent> <C-b> <cmd>lua require(\'lspsaga.action\').smart_scroll_with_saga(-1)<CR>')
-
---[[ " autoformat
-autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 100)
-autocmd BufWritePre *.jsx lua vim.lsp.buf.formatting_sync(nil, 100)
-autocmd BufWritePre *.lua lua vim.lsp.buf.formatting_sync(nil, 100) ]]
--- Java
--- autocmd FileType java nnoremap ca <Cmd>lua require('jdtls').code_action()<CR>
