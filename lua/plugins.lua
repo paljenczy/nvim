@@ -23,18 +23,13 @@ return require('packer').startup(function()
   use 'norcalli/nvim_utils'
 
   -- -- LSP
+  use { "williamboman/mason.nvim" }
+  use { "williamboman/mason-lspconfig.nvim" }
+  use 'jose-elias-alvarez/null-ls.nvim'
   use 'neovim/nvim-lspconfig'
   use {'glepnir/lspsaga.nvim', branch = 'main'}
   use 'onsails/lspkind-nvim'
-  use 'kosayoda/nvim-lightbulb'
-  use 'mfussenegger/nvim-jdtls'
 
-  use { "williamboman/mason.nvim" }
-  use { "williamboman/mason-lspconfig.nvim" }
-
-
-  use 'ray-x/lsp_signature.nvim'
-  use 'jose-elias-alvarez/null-ls.nvim'
   use 'folke/trouble.nvim'
 
   -- Project management
@@ -72,9 +67,6 @@ return require('packer').startup(function()
   use 'nvim-telescope/telescope-file-browser.nvim'
 
   use({ "folke/noice.nvim", requires = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify", } })
-
-  use {'hkupty/iron.nvim'}
-
 
   -- -- Color
   use({ "catppuccin/nvim", as = "catppuccin"})
